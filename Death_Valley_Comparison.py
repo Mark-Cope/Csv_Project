@@ -52,7 +52,7 @@ for row in csv_s:
 
 import matplotlib.pyplot as plt
 
-fig, ax = plt.subplots(2,2)
+fig, ax = plt.subplots(2)
 
 
 ax[0].plot(dates_D, highs_D, c="red", alpha=0.5)
@@ -60,13 +60,13 @@ ax[0].plot(dates_D, lows_D, c="blue", alpha=0.5)
 ax[1].plot(dates_S, highs_S, c="red", alpha=0.5)
 ax[1].plot(dates_S, lows_S, c="blue", alpha=0.5)
 
-ax[0].plt.title('Temperature comparison between SITKA Airport, AK US and Death valley, CA US\n \n SITKA AIRPORT')
+plt.title('Temperature comparison between SITKA Airport, AK US and Death valley, CA US\n \n SITKA AIRPORT')
 
-plt.title('SITKA AIRPORT, AK US', fontsize=16)
-plt.xlabel("", fontsize=12)
+ax[1].plt.title('SITKA AIRPORT, AK US', fontsize=16)
+ax[1].plt.xlabel("", fontsize=12)
 
-plt.title("Death Valley, CA US", fontsize=16)
-plt.xlabel("", fontsize=12)
+ax[0].plt.title("Death Valley, CA US", fontsize=16)
+ax[0].plt.xlabel("", fontsize=12)
 
 ax[1].fill_between(dates_D, highs_D, lows_D, facecolor= 'blue', alpha=0.1)
 plt.tick_params(axis='both', label=12)
