@@ -69,10 +69,10 @@ plt.title("Death Valley, CA US", fontsize=16)
 plt.xlabel("", fontsize=12)
 
 ax[1].fill_between(dates_D, highs_D, lows_D, facecolor= 'blue', alpha=0.1)
-plt.tick_params(axis='both', label=12)
+plt.tick_params(axis='both', labelsize=12)
 
 ax[0].fill_between(dates_S, highs_S, lows_S, facecolor= 'blue', alpha=0.1)
-plt.tick_params(axis='both', label=12)
+plt.tick_params(axis='both', labelsize=12)
 
 
 fig.autofmt_xdate()
