@@ -11,65 +11,68 @@ csv_s = csv.reader(open_sitka, delimiter= ",")
 header_row = next(csv_d)
 header_row = next(csv_s)
 
-highsD = []
-datesD = []
-lowsD = []
+highs_D = []
+dates_D = []
+lows_D = []
 
-highsS = []
-datesS = []
-lowsS = []
+highs_S = []
+dates_S = []
+lows_S = []
 
 
 
 for row in csv_d:
     try:
-        highD = int(row[4])
-        lowD = int(row[5])
-        current_dateD = datetime.strptime(row[2],"%Y-%m-%d") 
+        high_D = int(row[4])
+        low_D = int(row[5])
+        current_date_D = datetime.strptime(row[2],"%Y-%m-%d") 
         
     except ValueError:
-        print(f"Missing data for {current_dateD}")
+        print(f"Missing data for {current_date_D}")
     else:
-        highsD.append(highD)
-        lowsD.append(lowD)
-        datesD.append(current_dateD)
+        highs_D.append(high_D)
+        lows_D.append(low_D)
+        dates_D.append(current_date_D)
     
 for row in csv_s:
     try:
-        highS = int(row[5])
-        lowS = int(row[6])
-        current_dateS = datetime.strptime(row[2],"%Y-%m-%d") 
+        high_S = int(row[5])
+        low_S = int(row[6])
+        current_date_S = datetime.strptime(row[2],"%Y-%m-%d") 
         
     except ValueError:
-        print(f"Missing data for {current_dateS}")
+        print(f"Missing data for {current_date_S}")
     else:
-        highsS.append(highS)
-        lowsS.append(lowS)
-        datesS.append(current_dateS)
+        highs_S.append(high_S)
+        lows_S.append(low_S)
+        dates_S.append(current_date_S)
     
 
-print(highsD)
-print(highsS)
+
 
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(2,2)
 
 
-ax[0].plot(datesD, highD, c="red", alpha=0.5)
-ax[0].plot(datesD, highD, c="blue", alpha=0.5)
-ax[1].plot(datesS, highS, c="red", alpha=0.5)
-ax[1].plot(datesS, highS, c="blue", alpha=0.5)
+ax[0].plot(dates_D, highs_D, c="red", alpha=0.5)
+ax[0].plot(dates_D, lows_D, c="blue", alpha=0.5)
+ax[1].plot(dates_S, highs_S, c="red", alpha=0.5)
+ax[1].plot(dates_S, lows_S, c="blue", alpha=0.5)
 
+ax[0].plt.title('Temperature comparison between SITKA Airport, AK US and Death valley, CA US\n \n SITKA AIRPORT')
 
+plt.title('SITKA AIRPORT, AK US', fontsize=16)
+plt.xlabel("", fontsize=12)
 
-plt.title("Daily High and Low Temp- 2018 and Death Valley", fontsize=16)
-plt.xlabel("")
+plt.title("Death Valley, CA US", fontsize=16)
+plt.xlabel("", fontsize=12)
 
-plt.fill_between(datesD, highsD, lowsD, facecolor= 'blue', alpha=0.1)
-plt.ylabel("Temperature (F)", fontsize=16)
-plt.tick_params(axis="both", labelsize=16)
+ax[1].fill_between(dates_D, highs_D, lows_D, facecolor= 'blue', alpha=0.1)
+plt.tick_params(axis='both', label=12)
 
+ax[0].fill_between(dates_S, highs_S, lows_S, facecolor= 'blue', alpha=0.1)
+plt.tick_params(axis='both', label=12)
 
 
 fig.autofmt_xdate()
